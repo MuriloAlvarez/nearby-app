@@ -29,6 +29,7 @@ export default function Categorie({ iconId, isSelected = false, name, ...rest }:
         maxWidth: 200,
         flex: 1,
       }}
+      {...rest}
     >
       <Icon size={16} color={colors.gray[isSelected ? 100 : 400]} />
       <Text style={{ color: isSelected ? colors.gray[100] : colors.gray[500] }}>{name}</Text>

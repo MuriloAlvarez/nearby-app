@@ -8,14 +8,16 @@ export type CategoriesProps = {
 
 type Props = {
   data: CategoriesProps;
+  selected: string;
+  onSelected: (id: string) => void;
 };
 
-export default function Categories({ data }: Props) {
+export default function Categories({ data, onSelected, selected }: Props) {
   return (
     <View style={{ position: 'absolute', top: 64, zIndex: 1, width: '100%' }}>
       <FlatList
         data={data}
-        renderItem={({ item }) => <Categorie name={item.name} iconId={item.id} />}
+        renderItem={({ item }) => <Categorie name={item.name} iconId={item.id} onPress={() => onSelected(item.id)} isSelected={item.id === selected} />}
         keyExtractor={(item) => String(item.id)}
         horizontal
         showsHorizontalScrollIndicator={false}
