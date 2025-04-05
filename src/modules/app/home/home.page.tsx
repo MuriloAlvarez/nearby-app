@@ -4,13 +4,13 @@ import useHomePage from './useHome.hook';
 
 export default function HomePage() {
   const {
-    methods: {},
-    state: { categories },
+    methods: { setSelected },
+    state: { categories, selected },
   } = useHomePage();
 
   return (
     <View>
-      <Categories data={categories} />
+      <Categories data={categories} onSelected={setSelected} selected={selected} />
       <Text>Home</Text>
     </View>
   );

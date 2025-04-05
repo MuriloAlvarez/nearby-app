@@ -5,10 +5,12 @@ import { Alert } from 'react-native';
 
 export default function useHomePage() {
   const [categories, setCategories] = useState<CategoriesProps>([]);
+  const [selected, setSelected] = useState('');
 
   async function fetchCategories() {
     try {
       const { data } = await api.get('/categories');
+      setSelected(data[0].id);
       setCategories(data);
     } catch (error) {
       Alert.alert('Categorias', 'Não foi possível carregar as categorias.');
@@ -20,7 +22,7 @@ export default function useHomePage() {
   }, []);
 
   return {
-    state: { categories },
-    methods: { setCategories },
+    state: { categories, selected },
+    methods: { setCategories, setSelected },
   };
 }
