@@ -11,7 +11,6 @@ export default function HomePage() {
   return (
     <View>
       <Categories data={categories} onSelected={setSelected} selected={selected} />
-      <Text>Home</Text>
     </View>
   );
 }

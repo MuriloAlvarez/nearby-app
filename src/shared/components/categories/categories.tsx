@@ -14,7 +14,7 @@ type Props = {
 
 export default function Categories({ data, onSelected, selected }: Props) {
   return (
-    <View style={{ position: 'absolute', top: 64, zIndex: 1, width: '100%' }}>
+    <View style={{ position: 'absolute', top: 56, zIndex: 1, width: '100%' }}>
       <FlatList
         data={data}
         renderItem={({ item }) => <Categorie name={item.name} iconId={item.id} onPress={() => onSelected(item.id)} isSelected={item.id === selected} />}
