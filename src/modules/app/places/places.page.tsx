@@ -26,7 +26,7 @@ export default function PlacesPage({ data, isLoading }: Props) {
       handleIndicatorStyle={s.indicator}
     >
       <BottomSheetFlatList
-        ListHeaderComponent={() => (isLoading ? <Loading /> : <Text style={s.title}>Explore locais perto de você</Text>)}
+        ListHeaderComponent={() => (isLoading && !data ? <Loading /> : <Text style={s.title}>Explore locais perto de você</Text>)}
         contentContainerStyle={s.content}
         data={data}
         keyExtractor={(item) => item.id}
