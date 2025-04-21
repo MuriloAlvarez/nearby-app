@@ -22,7 +22,7 @@ export default function Layout() {
         screenOptions={{
           headerShown: false,
           contentStyle: {
-            backgroundColor: colors.gray[100],
+            backgroundColor: colors.gray[200],
           },
         }}
       >

@@ -12,6 +12,11 @@ export default function useHomePage() {
   const [category, setCategory] = useState('');
   const [isLoadingMarkets, setIsLoadingMarkets] = useState(false);
 
+  const initialLocation = {
+    latitude: -23.558537644307734,
+    longitude: -46.65950803196077,
+  };
+
   async function fetchCategories() {
     try {
       const { data } = await api.get('/categories');
@@ -45,7 +50,7 @@ export default function useHomePage() {
   }, [category]);
 
   return {
-    state: { categories, category, markets, isLoadingMarkets },
+    state: { categories, category, markets, isLoadingMarkets, initialLocation },
     methods: { setCategories, setCategory, setMarkets },
   };
 }
