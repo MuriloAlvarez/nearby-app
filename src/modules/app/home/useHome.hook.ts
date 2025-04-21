@@ -4,7 +4,10 @@ import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { PlaceProps } from '../places/components/place';
 
-type MarketProps = PlaceProps;
+type MarketProps = PlaceProps & {
+  latitude: number;
+  longitude: number;
+};
 
 export default function useHomePage() {
   const [categories, setCategories] = useState<CategoriesProps>([]);

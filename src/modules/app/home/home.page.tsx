@@ -1,8 +1,9 @@
 import Categories from '@/shared/components/categories/categories';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import useHomePage from './useHome.hook';
 import PlacesPage from '../places/places.page';
-import MapView from 'react-native-maps';
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { s } from './home.styles';
 
 export default function HomePage() {
   const {
@@ -18,11 +19,40 @@ export default function HomePage() {
         initialRegion={{
           latitude: initialLocation.latitude,
           longitude: initialLocation.longitude,
-          latitudeDelta: 0.02,
-          longitudeDelta: 0.02,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
         }}
-      />
+      >
+        <Marker
+          coordinate={{
+            latitude: initialLocation.latitude,
+            longitude: initialLocation.longitude,
+          }}
+          identifier="current"
+          image={require('@/shared/assets/location.png')}
+        />
+
+        {markets.map((item) => (
+          <Marker
+            key={item.id}
+            identifier={item.id}
+            coordinate={{ latitude: item.latitude, longitude: item.longitude }}
+            image={require('@/shared/assets/pin.png')}
+          >
+            <Callout>
+              <View>
+                <Image style={s.imageCallout} source={{ uri: item.cover }} />
+                <View style={{ height: 12 }} />
+                <Text style={s.titleCallout}>{item.name}</Text>
+                <Text style={s.addressCallout}>{item.address}</Text>
+              </View>
+            </Callout>
+          </Marker>
+        ))}
+      </MapView>
       <PlacesPage data={markets} isLoading={isLoadingMarkets} />
     </View>
   );
 }
+
+//27:07
