@@ -3,12 +3,14 @@ import Place, { PlaceProps } from './components/place';
 import { Text, useWindowDimensions } from 'react-native';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { s } from './places.style';
+import Loading from '@/shared/components/loading';
 
 type Props = {
   data: PlaceProps[];
+  isLoading: boolean;
 };
 
-export default function PlacesPage({ data }: Props) {
+export default function PlacesPage({ data, isLoading }: Props) {
   const dimensions = useWindowDimensions();
   const snapPoints = {
     min: 128,
@@ -24,7 +26,7 @@ export default function PlacesPage({ data }: Props) {
       handleIndicatorStyle={s.indicator}
     >
       <BottomSheetFlatList
-        ListHeaderComponent={() => <Text style={s.title}>Explore locais perto de você</Text>}
+        ListHeaderComponent={() => (isLoading ? <Loading /> : <Text style={s.title}>Explore locais perto de você</Text>)}
         contentContainerStyle={s.content}
         data={data}
         keyExtractor={(item) => item.id}

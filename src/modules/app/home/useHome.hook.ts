@@ -10,6 +10,7 @@ export default function useHomePage() {
   const [categories, setCategories] = useState<CategoriesProps>([]);
   const [markets, setMarkets] = useState<MarketProps[]>([]);
   const [category, setCategory] = useState('');
+  const [isLoadingMarkets, setIsLoadingMarkets] = useState(false);
 
   async function fetchCategories() {
     try {
@@ -22,6 +23,7 @@ export default function useHomePage() {
   }
 
   async function fetchMarkets() {
+    setIsLoadingMarkets(true);
     try {
       if (!category) return;
       const { data } = await api.get(`/markets/category/${category}`);
@@ -29,6 +31,8 @@ export default function useHomePage() {
     } catch (error) {
       console.log(error);
       Alert.alert('Erro', 'Não foi possível carregar os estabelecimentos.');
+    } finally {
+      setIsLoadingMarkets(false);
     }
   }
 
@@ -41,7 +45,7 @@ export default function useHomePage() {
   }, [category]);
 
   return {
-    state: { categories, category, markets },
+    state: { categories, category, markets, isLoadingMarkets },
     methods: { setCategories, setCategory, setMarkets },
   };
 }
