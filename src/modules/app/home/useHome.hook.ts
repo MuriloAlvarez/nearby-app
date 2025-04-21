@@ -2,18 +2,33 @@ import { api } from '@/services/api';
 import { CategoriesProps } from '@/shared/components/categories/categories';
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import { PlaceProps } from '../places/components/place';
+
+type MarketProps = PlaceProps;
 
 export default function useHomePage() {
   const [categories, setCategories] = useState<CategoriesProps>([]);
-  const [selected, setSelected] = useState('');
+  const [markets, setMarkets] = useState<MarketProps[]>([]);
+  const [category, setCategory] = useState('');
 
   async function fetchCategories() {
     try {
       const { data } = await api.get('/categories');
-      setSelected(data[0].id);
       setCategories(data);
+      setCategory(data[0].id);
     } catch (error) {
-      Alert.alert('Categorias', 'Não foi possível carregar as categorias.');
+      Alert.alert('Erro', 'Não foi possível carregar as categorias.');
+    }
+  }
+
+  async function fetchMarkets() {
+    try {
+      if (!category) return;
+      const { data } = await api.get(`/markets/category/${category}`);
+      setMarkets(data);
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Erro', 'Não foi possível carregar os estabelecimentos.');
     }
   }
 
@@ -21,8 +36,12 @@ export default function useHomePage() {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    fetchMarkets();
+  }, [category]);
+
   return {
-    state: { categories, selected },
-    methods: { setCategories, setSelected },
+    state: { categories, category, markets },
+    methods: { setCategories, setCategory, setMarkets },
   };
 }
