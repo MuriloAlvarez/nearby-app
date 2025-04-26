@@ -4,6 +4,7 @@ import { Text, useWindowDimensions } from 'react-native';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { s } from './places.style';
 import Loading from '@/shared/components/loading';
+import usePlacesPage from './usePlaces.hook';
 
 type Props = {
   data: PlaceProps[];
@@ -11,12 +12,16 @@ type Props = {
 };
 
 export default function PlacesPage({ data, isLoading }: Props) {
+  const {
+    methods: { push },
+  } = usePlacesPage();
   const dimensions = useWindowDimensions();
   const snapPoints = {
     min: 128,
     max: dimensions.height - 200,
   };
   const BottomSheetRefs = useRef<BottomSheet>(null);
+
   return (
     <BottomSheet
       enableOverDrag={false}
@@ -30,7 +35,7 @@ export default function PlacesPage({ data, isLoading }: Props) {
         contentContainerStyle={s.content}
         data={data}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Place data={item} />}
+        renderItem={({ item }) => <Place data={item} onPress={() => push({ pathname: '/market-details', params: { id: item.id } })} />}
       />
     </BottomSheet>
   );
