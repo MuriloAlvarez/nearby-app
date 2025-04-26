@@ -15,7 +15,7 @@ export const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  image: { height: 104, width: 116, backgroundColor: colors.gray[400], borderRadius: 8 },
+  image: { height: 104, width: 116, backgroundColor: colors.gray[200], borderRadius: 8 },
   content: { gap: 6, flex: 1 },
   title: { fontFamily: fontFamily.semiBold, fontSize: 14, color: colors.gray[600] },
   description: { fontFamily: fontFamily.regular, fontSize: 12, color: colors.gray[500] },

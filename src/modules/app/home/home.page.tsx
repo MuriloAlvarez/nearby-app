@@ -2,7 +2,7 @@ import Categories from '@/shared/components/categories/categories';
 import { Image, Text, View } from 'react-native';
 import useHomePage from './useHome.hook';
 import PlacesPage from '../places/places.page';
-import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Callout, Marker } from 'react-native-maps';
 import { s } from './home.styles';
 
 export default function HomePage() {
@@ -54,5 +54,3 @@ export default function HomePage() {
     </View>
   );
 }
-
-//27:07
