@@ -14,9 +14,4 @@ export const s = StyleSheet.create({
     width: '100%',
     borderRadius: 8,
   },
-  callout: {
-    width: 200,
-    height: 100,
-    backgroundColor: colors.gray[100],
-  },
 });
