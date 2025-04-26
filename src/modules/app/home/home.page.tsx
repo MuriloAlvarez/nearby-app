@@ -7,7 +7,7 @@ import { s } from './home.styles';
 
 export default function HomePage() {
   const {
-    methods: { setCategory },
+    methods: { setCategory, push },
     state: { categories, category, markets, isLoadingMarkets, initialLocation },
   } = useHomePage();
 
@@ -39,7 +39,14 @@ export default function HomePage() {
             coordinate={{ latitude: item.latitude, longitude: item.longitude }}
             image={require('@/shared/assets/pin.png')}
           >
-            <Callout>
+            <Callout
+              onPress={() =>
+                push({
+                  pathname: '/market-details',
+                  params: { id: item.id },
+                })
+              }
+            >
               <View>
                 <Image style={s.imageCallout} source={{ uri: item.cover }} />
                 <View style={{ height: 12 }} />

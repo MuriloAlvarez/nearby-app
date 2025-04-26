@@ -3,6 +3,7 @@ import { CategoriesProps } from '@/shared/components/categories/categories';
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { PlaceProps } from '../places/components/place';
+import { useRouter } from 'expo-router';
 
 type MarketProps = PlaceProps & {
   latitude: number;
@@ -14,6 +15,7 @@ export default function useHomePage() {
   const [markets, setMarkets] = useState<MarketProps[]>([]);
   const [category, setCategory] = useState('');
   const [isLoadingMarkets, setIsLoadingMarkets] = useState(false);
+  const { push } = useRouter();
 
   const initialLocation = {
     latitude: -23.558537644307734,
@@ -54,6 +56,6 @@ export default function useHomePage() {
 
   return {
     state: { categories, category, markets, isLoadingMarkets, initialLocation },
-    methods: { setCategories, setCategory, setMarkets },
+    methods: { setCategories, setCategory, setMarkets, push },
   };
 }
