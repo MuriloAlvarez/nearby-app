@@ -1,9 +1,9 @@
 import { api } from '@/services/api';
 import { CategoriesProps } from '@/shared/components/categories/categories';
 import { useEffect, useState } from 'react';
-import { Alert } from 'react-native';
 import { PlaceProps } from '../places/components/place';
 import { useRouter } from 'expo-router';
+import { useToastify } from '@/shared/hooks/toastify';
 
 type MarketProps = PlaceProps & {
   latitude: number;
@@ -22,13 +22,15 @@ export default function useHomePage() {
     longitude: -46.65950803196077,
   };
 
+  const toast = useToastify();
+
   async function fetchCategories() {
     try {
       const { data } = await api.get('/categories');
       setCategories(data);
       setCategory(data[0].id);
     } catch (error) {
-      Alert.alert('Erro', 'Não foi possível carregar as categorias.');
+      toast.methods.alert('error', 'Não foi possível carregar as categorias.');
     }
   }
 
@@ -40,7 +42,7 @@ export default function useHomePage() {
       setMarkets(data);
     } catch (error) {
       console.log(error);
-      Alert.alert('Erro', 'Não foi possível carregar os estabelecimentos.');
+      toast.methods.alert('error', 'Não foi possível carregar os estabelecimentos.');
     } finally {
       setIsLoadingMarkets(false);
     }
