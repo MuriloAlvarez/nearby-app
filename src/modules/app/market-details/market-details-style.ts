@@ -3,25 +3,38 @@ import { fontFamily } from '@/shared/styles/font-family';
 import { StyleSheet } from 'react-native';
 
 export const s = StyleSheet.create({
-  buttonBack: { position: 'absolute', top: 24, left: 24, zIndex: 20, width: 56 },
+  buttonBack: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 20,
+    width: 40,
+    height: 40,
+    backgroundColor: colors.green.base,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: colors.gray[100],
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    paddingVertical: 40,
+    paddingVertical: 32,
     paddingHorizontal: 32,
     justifyContent: 'space-between',
   },
   image: {
     backgroundColor: colors.gray[300],
-    height: 260,
+    height: 210,
     marginBottom: -20,
   },
   content: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 32,
+    gap: 24,
+    flex: 1,
+    marginBottom: 16,
   },
   information: {
     display: 'flex',
@@ -40,7 +53,7 @@ export const s = StyleSheet.create({
   },
   description: {
     fontFamily: fontFamily.regular,
-    fontSize: 16,
+    fontSize: 14,
     color: colors.gray[500],
   },
   couponsAvailable: {
@@ -86,12 +99,29 @@ export const s = StyleSheet.create({
     fontFamily: fontFamily.regular,
     color: colors.gray[500],
     fontSize: 14,
-    marginTop: 6,
   },
   contentDetails: {
     display: 'flex',
     flexDirection: 'row',
     gap: 12,
     alignItems: 'center',
+  },
+  action: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 12,
+    alignItems: 'center',
+  },
+  actionMap: {
+    width: 56,
+  },
+  actionQRCode: {
+    flex: 1,
+  },
+  textQRCode: {
+    fontFamily: fontFamily.semiBold,
+    color: colors.gray[100],
+    fontSize: 14,
+    marginLeft: 16,
   },
 });
