@@ -1,5 +1,4 @@
 import { colors } from '@/shared/styles/colors';
-import { fontFamily } from '@/shared/styles/font-family';
 import { categoriesIcons } from '@/shared/utils/categories-icons';
 import { Pressable, Text, PressableProps } from 'react-native';
 

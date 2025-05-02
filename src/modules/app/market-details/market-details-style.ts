@@ -34,7 +34,7 @@ export const s = StyleSheet.create({
     flexDirection: 'column',
     gap: 24,
     flex: 1,
-    marginBottom: 16,
+    marginBottom: 20,
   },
   information: {
     display: 'flex',
@@ -82,7 +82,7 @@ export const s = StyleSheet.create({
   details: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 12,
+    gap: 16,
   },
   separator: {
     width: '100%',
@@ -93,7 +93,7 @@ export const s = StyleSheet.create({
     fontFamily: fontFamily.medium,
     color: colors.gray[600],
     fontSize: 16,
-    marginBottom: 8,
+    marginBottom: 10,
   },
   descriptionDetails: {
     fontFamily: fontFamily.regular,
