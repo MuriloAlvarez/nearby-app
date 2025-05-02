@@ -1,11 +1,11 @@
 import { useRouter } from 'expo-router';
 
 export default function useWelcomePage() {
-  const { push } = useRouter();
+  const { navigate } = useRouter();
 
   return {
     methods: {
-      push,
+      navigate,
     },
   };
 }

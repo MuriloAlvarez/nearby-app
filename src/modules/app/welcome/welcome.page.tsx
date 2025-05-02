@@ -6,7 +6,7 @@ import useWelcomePage from './useWelcome.hook';
 
 export default function Welcome() {
   const {
-    methods: { push },
+    methods: { navigate },
   } = useWelcomePage();
 
   return (
@@ -23,7 +23,7 @@ export default function Welcome() {
 
       <Step />
 
-      <Button onPress={() => push('/home')}>
+      <Button onPress={() => navigate('/home')}>
         <Button.Title>Começar</Button.Title>
       </Button>
     </View>

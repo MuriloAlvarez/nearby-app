@@ -7,7 +7,7 @@ import { s } from './home.styles';
 
 export default function HomePage() {
   const {
-    methods: { setCategory, push },
+    methods: { setCategory, navigate },
     state: { categories, category, markets, isLoadingMarkets, initialLocation },
   } = useHomePage();
 
@@ -41,7 +41,7 @@ export default function HomePage() {
           >
             <Callout
               onPress={() =>
-                push({
+                navigate({
                   pathname: '/market-details',
                   params: { id: item.id },
                 })

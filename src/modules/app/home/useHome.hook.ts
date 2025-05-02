@@ -15,7 +15,7 @@ export default function useHomePage() {
   const [markets, setMarkets] = useState<MarketProps[]>([]);
   const [category, setCategory] = useState('');
   const [isLoadingMarkets, setIsLoadingMarkets] = useState(false);
-  const { push } = useRouter();
+  const { navigate } = useRouter();
 
   const initialLocation = {
     latitude: -23.558537644307734,
@@ -58,6 +58,6 @@ export default function useHomePage() {
 
   return {
     state: { categories, category, markets, isLoadingMarkets, initialLocation },
-    methods: { setCategories, setCategory, setMarkets, push },
+    methods: { setCategories, setCategory, setMarkets, navigate },
   };
 }
